@@ -1,13 +1,14 @@
 # WPRule
 
-Requires at least: 3.0.1
-Tested up to: 6.5
-Stable tag: 6.5
-Author:  Adam Rehal @ [Adapt AB](https://www.adapt.se)
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Integrates WordPress with rule.io. Requires a rule.io subscription.
+
+Requires at least: 3.0.1 
+Tested up to: 6.5 
+Stable tag: 6.5 
+Author:  Adam Rehal @ [Adapt AB](https://www.adapt.se) 
+License: GPLv2 or later 
+License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
 ## Installation
 1. Click on the green clone or download button on this page and click Download Zip
