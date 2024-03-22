@@ -3,11 +3,11 @@
 
 Integrates WordPress with rule.io. Requires a rule.io subscription.
 
-Requires at least: 3.0.1 
-Tested up to: 6.5 
-Stable tag: 6.5 
-Author:  Adam Rehal @ [Adapt AB](https://www.adapt.se) 
-License: GPLv2 or later 
+Requires at least: 3.0.1 <br>
+Tested up to: 6.5 <br>
+Stable tag: 6.5 <br>
+Author:  Adam Rehal @ [Adapt AB](https://www.adapt.se) <br>
+License: GPLv2 or later <br>
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
 ## Installation
