@@ -1,9 +1,11 @@
 # WPRule
 
+**UNDER DEVELOPMENT** - Not yet functional
 
 Integrates WordPress with rule.io. Requires a rule.io subscription.
 
-Requires at least: 3.0.1 <br>
+Requires WP at least: 3.0.1 <br>
+Requires cURL to be installed on the server <br>
 Tested up to: 6.5 <br>
 Stable tag: 6.5 <br>
 Author:  Adam Rehal @ [Adapt AB](https://www.adapt.se) <br>
