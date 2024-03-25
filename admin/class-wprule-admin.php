@@ -3,7 +3,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       https://www.wplauncher.com
+ * @link       https://github.com/Adapt-AB/wprule
  * @since      1.0.0
  *
  * @package    Wprule
@@ -103,14 +103,15 @@ class Wprule_Admin {
 	}
 	public function addPluginAdminMenu() {
 		//add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
-		add_menu_page(  $this->plugin_name, 'Settings Page', 'administrator', $this->plugin_name, array( $this, 'displayPluginAdminDashboard' ), 'dashicons-chart-area', 26 );
+		add_menu_page(  $this->plugin_name, 'WPRule', 'administrator', $this->plugin_name, array( $this, 'displayPluginAdminDashboard' ), 'dashicons-email-alt', 26 );
 		
 		//add_submenu_page( '$parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
-		add_submenu_page( $this->plugin_name, 'Settings Page Settings', 'Settings', 'administrator', $this->plugin_name.'-settings', array( $this, 'displayPluginAdminSettings' ));
+		add_submenu_page( $this->plugin_name, 'WPRule Settings', 'Settings', 'administrator', $this->plugin_name.'-settings', array( $this, 'displayPluginAdminSettings' ));
 	}
 	public function displayPluginAdminDashboard() {
 		require_once 'partials/'.$this->plugin_name.'-admin-display.php';
-  }
+	}
+
 	public function displayPluginAdminSettings() {
 		// set this var to be used in the settings-display view
 		$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'general';
@@ -120,65 +121,101 @@ class Wprule_Admin {
 		}
 		require_once 'partials/'.$this->plugin_name.'-admin-settings-display.php';
 	}
+
 	public function settingsPageSettingsMessages($error_message){
 		switch ($error_message) {
-				case '1':
-						$message = __( 'There was an error adding this setting. Please try again.  If this persists, shoot us an email.', 'my-text-domain' );                 $err_code = esc_attr( 'wprule_example_setting' );                 $setting_field = 'wprule_example_setting';
-						break;
+			case '1':
+				$message = __( 'There was an error adding this setting. Please try again.  If this persists, shoot us an email.', 'wprule-text-domain' );
+				$err_code = esc_attr( 'wprule_setting' );
+				$setting_field = 'wprule_setting';
+				break;
 		}
 		$type = 'error';
 		add_settings_error(
-					$setting_field,
-					$err_code,
-					$message,
-					$type
-			);
+			$setting_field,
+			$err_code,
+			$message,
+			$type
+		);
 	}
+
 	public function registerAndBuildFields() {
-			/**
+		/**
 		 * First, we add_settings_section. This is necessary since all future settings must belong to one.
 		 * Second, add_settings_field
 		 * Third, register_setting
 		 */     
 		add_settings_section(
+
 			// ID used to identify this section and with which to register options
 			'wprule_general_section',
+
 			// Title to be displayed on the administration page
 			'',  
+
 			// Callback used to render the description of the section
-				array( $this, 'wprule_display_general_account' ),
+			array( $this, 'wprule_display_general_account' ),
+
 			// Page on which to add this section of options
 			'wprule_general_settings'
 		);
+
+
+		// API-key settings field
 		unset($args);
 		$args = array (
-							'type'      => 'input',
-							'subtype'   => 'text',
-							'id'    => 'wprule_example_setting',
-							'name'      => 'wprule_example_setting',
-							'required' => 'true',
-							'get_options_list' => '',
-							'value_type'=>'normal',
-							'wp_data' => 'option'
-					);
+			'type'      => 'input',
+			'subtype'   => 'password',
+			'id'    => 'wprule_setting_apikey',
+			'name'      => 'wprule_setting_apikey',
+			'required' => 'true',
+			'get_options_list' => '',
+			'value_type'=>'normal',
+			'wp_data' => 'option'
+		);
+
 		add_settings_field(
-			'wprule_example_setting',
-			'Example Setting',
+			'wprule_setting_apikey',
+			'API-key',
 			array( $this, 'wprule_render_settings_field' ),
 			'wprule_general_settings',
 			'wprule_general_section',
 			$args
 		);
-
-
 		register_setting(
-						'wprule_general_settings',
-						'wprule_example_setting'
-						);
+			'wprule_general_settings',
+			'wprule_setting_apikey'
+		);
+
+		// Submit button test settings field
+		// unset($args);
+		$args = array (
+			'type'      => 'input',
+			'subtype'   => 'text',
+			'id'    => 'wprule_setting_submit_button_text',
+			'name'      => 'wprule_setting_submit_button_text',
+			'required' => 'true',
+			'get_options_list' => '',
+			'value_type'=>'normal',
+			'wp_data' => 'option'
+		);
+
+		add_settings_field(
+			'wprule_setting_submit_button_text',
+			'Submit button text',
+			array( $this, 'wprule_render_settings_field' ),
+			'wprule_general_settings',
+			'wprule_general_section',
+			$args
+		);
+		register_setting(
+			'wprule_general_settings',
+			'wprule_setting_submit_button_text'
+		);
 
 	}
 	public function wprule_display_general_account() {
-		echo '<p>These settings apply to all Plugin Name functionality.</p>';
+		//echo '<p>These settings apply to all Plugin Name functionality.</p>';
 	} 
 	public function wprule_render_settings_field($args) {
 			/* EXAMPLE INPUT

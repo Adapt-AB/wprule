@@ -53,6 +53,16 @@ register_activation_hook( __FILE__, 'activate_wprule' );
 register_deactivation_hook( __FILE__, 'deactivate_wprule' );
 
 /**
+ * The code for the shortcode
+ * This action is documented in includes/class-wprule-shortcode.php
+ */
+function wprule_shortcode() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wprule-shortcode.php';
+	Wprule_Shortcode::wprule_shortcode();
+}
+add_action( 'init', 'wprule_shortcode' );
+
+/**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
@@ -66,7 +76,51 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wprule.php';
  * not affect the page life cycle.
  *
  * @since    1.0.0
+ *
  */
+
+add_action( 'wp_ajax_wprule_add_subscriber', 'wprule_add_subscriber' );
+function wprule_add_subscriber() {
+
+	$email = $_POST["email"];
+	$apikey = get_option( "wprule_setting_apikey", false );
+
+    $curl = curl_init();
+
+	curl_setopt_array($curl, array(
+		CURLOPT_URL => 'https://app.rule.io/api/v2/subscribers',
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'POST',
+		CURLOPT_POSTFIELDS =>'{
+			"update_on_duplicate": true,
+			"tags": [
+			    "Test Adam"
+			],
+			"subscribers": {
+			    "email": "' . $email . '",
+			    "fields": []
+		    }
+		}',
+		CURLOPT_HTTPHEADER => array(
+			'Content-Type: application/json',
+			'Authorization: Bearer ' . $apikey
+		),
+	));
+
+	$response = curl_exec($curl);
+
+	curl_close($curl);
+	echo $response;
+
+    // Die allready you f*cker!
+    wp_die();
+}
+
 function run_wprule() {
 
 	$plugin = new Wprule();

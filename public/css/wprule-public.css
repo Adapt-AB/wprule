@@ -2,3 +2,53 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+#wprule {
+	box-sizing: border-box;
+	width: 100%;
+}
+
+#wprule input {
+	font-size: 16px;
+	width: 400px;
+	background: #FAFAFA;
+	padding: 15px;
+	color: #555;
+	border: 2px solid #EDEDED;
+	display: inline-block;
+
+}
+#wprule a {
+	padding: 13px;
+	display: inline-block;
+	font-size: 16px;
+	background: #2f2f2f;
+	color: #fff;
+	text-decoration: none;
+}
+#wprule input:focus {
+	outline: none;
+}
+#wprule .wprule_response {
+	display: none;
+	color: #155724;
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+	padding: 10px 16px;
+	font-size: 14px;
+	position: absolute;
+	width: 400px;
+}
+#wprule .wprule_response.good {
+	color: #155724;
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+}
+#wprule .wprule_response.bad {
+	color: #721c24;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
+}
+#wprule .wprule_response .close {
+	color:green;
+}

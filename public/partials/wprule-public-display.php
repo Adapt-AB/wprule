@@ -5,7 +5,7 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       https://www.wplauncher.com
+ * @link       https://github.com/Adapt-AB/wprule
  * @since      1.0.0
  *
  * @package    Wprule

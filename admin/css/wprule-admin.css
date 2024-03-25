@@ -2,3 +2,11 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+.card {
+	max-width:100% !important;
+}
+.api_screenshot {
+	max-width: 100%;
+	height: auto;
+}

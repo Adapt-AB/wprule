@@ -3,7 +3,7 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       https://www.wplauncher.com
+ * @link       https://github.com/Adapt-AB/wprule
  * @since      1.0.0
  *
  * @package    Wprule
@@ -97,6 +97,10 @@ class Wprule_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wprule-public.js', array( 'jquery' ), $this->version, false );
+
+		wp_localize_script( $this->plugin_name, 'ajax_object', array(
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+		));
 
 	}
 
