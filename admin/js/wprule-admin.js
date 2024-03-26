@@ -4,7 +4,7 @@
 	jQuery(document).ready(function($) {
 
 		// UI for selecting tags
-		$('#wprule_setting_tags').after('<div id="wprule_list_tags"></div>')
+		$('#wprule_setting_tags').after('<div class="tags-info">Tags are created in <a href="https://app.rule.io/v5/#/app/subscribers/tags/list">rule.io</a></div><div id="wprule_list_tags"></div>')
 
 		var current_tags = $('#wprule_setting_tags');
 
@@ -24,10 +24,12 @@
 		};
     	$.post(ajax_object.ajax_url, data, function(response) {
 			response = jQuery.parseJSON(response);
+			console.log(response);
 			var tags = "";
 			$.each(response.tags, function(index, val) {
 				tags = tags + "<span>" + val.name + "</span>";
 			});
+
 			$('#wprule_list_tags').html(tags);
 
 			$('#wprule_list_tags span').each(function(index, el) {
