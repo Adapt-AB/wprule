@@ -3,6 +3,7 @@
 
 	jQuery(document).ready(function($) {
 
+		// UI for selecting tags
 		$('#wprule_setting_tags').after('<div id="wprule_list_tags"></div>')
 
 		var current_tags = $('#wprule_setting_tags');
@@ -21,7 +22,6 @@
 		var data = {
 			'action': 'wprule_get_tags',
 		};
-
     	$.post(ajax_object.ajax_url, data, function(response) {
 			response = jQuery.parseJSON(response);
 			var tags = "";
@@ -36,10 +36,6 @@
 				}
 			});
 		});
-
-
-
-
 	});
 
 })( jQuery );

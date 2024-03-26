@@ -2,15 +2,15 @@
 
 /**
  *
- * @link              https://
- * @since             1.0.0
+ * @link              https://github.com/Adapt-AB/wprule
+ * @since             1.0.1
  * @package           Wprule
  *
  * @wordpress-plugin
  * Plugin Name:       WPRule
- * Plugin URI:        https://
+ * Plugin URI:        https://github.com/Adapt-AB/wprule
  * Description:       Integrates WordPress with rule.io
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Adam Rehal @ Adapt AB
  * Author URI:        https://www.adapt.se
  * License:           GPL-2.0+
@@ -27,9 +27,9 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
+ * Update it as you release new versions.
  */
-define( 'SETTINGS_PAGE_VERSION', '1.0.0' );
+define( 'SETTINGS_PAGE_VERSION', '1.0.1' );
 
 /**
  * The code that runs during plugin activation.
@@ -154,7 +154,7 @@ function wprule_get_tags() {
 		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		CURLOPT_CUSTOMREQUEST => 'GET',
 		CURLOPT_HTTPHEADER => array(
-		'Authorization: Bearer ff86a6e5-2a55a88-ccfebaa-dded916-88e97187055'
+		'Authorization: Bearer ' . $apikey
 	),
 	));
 

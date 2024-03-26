@@ -3,6 +3,7 @@
 
 	jQuery(document).ready(function($) {
 
+		// Subscribe button is clicked
 		$('#wprule a').click(function(event) {
 			event.preventDefault();
 
@@ -26,7 +27,6 @@
 					}
 				});
 			}else{
-				//console.log("Not an email");
 				message.addClass('bad').fadeIn('50').html("Not an email");
 			}
 		});

@@ -1,8 +1,8 @@
 # WPRule
 
-**UNDER DEVELOPMENT** Version 1.0
+**Version** 1.0.1
 
-Integrates WordPress with rule.io. Requires a rule.io subscription.
+Integrates WordPress with rule.io. Requires a <a href="https://rule.io">rule.io</a> subscription.
 
 Requires WP at least: 3.0.1 <br>
 Requires cURL to be installed on the server <br>
@@ -11,6 +11,11 @@ Stable tag: 6.5 <br>
 Author:  Adam Rehal @ [Adapt AB](https://www.adapt.se) <br>
 License: GPLv2 or later <br>
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
+
+## Todo
+
+- localization
+- 
 
 ## Installation
 1. Click on the green clone or download button on this page and click Download Zip

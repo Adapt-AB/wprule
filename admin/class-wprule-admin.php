@@ -240,21 +240,25 @@ class Wprule_Admin {
 		);
 
 	}
+
 	public function wprule_display_general_account() {
 		//echo '<p>These settings apply to all Plugin Name functionality.</p>';
 	} 
+
 	public function wprule_render_settings_field($args) {
-			/* EXAMPLE INPUT
-								'type'      => 'input',
-								'subtype'   => '',
-								'id'    => $this->plugin_name.'_example_setting',
-								'name'      => $this->plugin_name.'_example_setting',
-								'required' => 'required="required"',
-								'get_option_list' => "",
-									'value_type' = serialized OR normal,
-			'wp_data'=>(option or post_meta),
-			'post_id' =>
-			*/     
+
+		/* EXAMPLE INPUT
+		'type'      => 'input',
+		'subtype'   => '',
+		'id'    => $this->plugin_name.'_example_setting',
+		'name'      => $this->plugin_name.'_example_setting',
+		'required' => 'required="required"',
+		'get_option_list' => "",
+		'value_type' = serialized OR normal,
+		'wp_data'=>(option or post_meta),
+		'post_id' =>
+		*/
+
 		if($args['wp_data'] == 'option'){
 			$wp_data_value = get_option($args['name']);
 		} elseif($args['wp_data'] == 'post_meta'){
