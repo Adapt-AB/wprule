@@ -10,3 +10,22 @@
 	max-width: 100%;
 	height: auto;
 }
+#wprule_setting_tags {
+	display: none;
+}
+#wprule_list_tags {
+	max-width: 400px;
+	padding-top: 5px;
+}
+#wprule_list_tags span {
+	display: inline-block;
+	background: #fff;
+	border-radius: 3px;
+	margin: 5px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+#wprule_list_tags span.tag-selected {
+	background: #2271b1;
+	color: #fff;
+}

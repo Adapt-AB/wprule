@@ -2,12 +2,12 @@
 	'use strict';
 
 	jQuery(document).ready(function($) {
-		//console.log(ajax_object);
+
 		$('#wprule a').click(function(event) {
 			event.preventDefault();
 
 			var email = $(this).siblings('input').val();
-			console.log(email);
+
 			var message = $(this).siblings('div')
 			message.removeClass('good bad')
 
@@ -18,8 +18,12 @@
 				};
 
 		    	$.post(ajax_object.ajax_url, data, function(response) {
-					//console.log(jQuery.parseJSON(response));
-					message.addClass('good').fadeIn('50').html(response);
+					response = jQuery.parseJSON(response);
+					if (response.message == "Success") {
+						message.addClass('good').fadeIn('50').html("Thanks you for signing up");
+					}else{
+						message.addClass('bad').fadeIn('50').html("Something went wrong");
+					}
 				});
 			}else{
 				//console.log("Not an email");

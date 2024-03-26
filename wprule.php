@@ -79,11 +79,22 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wprule.php';
  *
  */
 
+/**
+ * Add subscriber
+ *
+ */
 add_action( 'wp_ajax_wprule_add_subscriber', 'wprule_add_subscriber' );
 function wprule_add_subscriber() {
 
 	$email = $_POST["email"];
 	$apikey = get_option( "wprule_setting_apikey", false );
+	$optin = (get_option( "wprule_setting_require_optin", false )) ? "true" : "false" ;
+	$optin = (get_option( "wprule_setting_require_optin", false )) ? "true" : "false" ;
+	$tags = "";
+	foreach (array_filter(explode(",", get_option( "wprule_setting_tags", false ))) as $tag) {
+		$tags .= '"' . $tag . '",';
+	}
+	$tags = rtrim($tags, ',');
 
     $curl = curl_init();
 
@@ -98,8 +109,9 @@ function wprule_add_subscriber() {
 		CURLOPT_CUSTOMREQUEST => 'POST',
 		CURLOPT_POSTFIELDS =>'{
 			"update_on_duplicate": true,
+			"require_opt_in": "' . $require_optin . '",
 			"tags": [
-			    "Test Adam"
+			    ' . $tags . '
 			],
 			"subscribers": {
 			    "email": "' . $email . '",
@@ -120,6 +132,41 @@ function wprule_add_subscriber() {
     // Die allready you f*cker!
     wp_die();
 }
+
+/**
+ * Get all tags
+ *
+ */
+add_action( 'wp_ajax_wprule_get_tags', 'wprule_get_tags' );
+function wprule_get_tags() {
+
+	$apikey = get_option( "wprule_setting_apikey", false );
+
+    $curl = curl_init();
+
+	curl_setopt_array($curl, array(
+		CURLOPT_URL => 'https://app.rule.io/api/v2/tags?limit=100',
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'GET',
+		CURLOPT_HTTPHEADER => array(
+		'Authorization: Bearer ff86a6e5-2a55a88-ccfebaa-dded916-88e97187055'
+	),
+	));
+
+	$response = curl_exec($curl);
+
+	curl_close($curl);
+	echo $response;
+
+    // Die allready you f*cker!
+    wp_die();
+}
+
 
 function run_wprule() {
 

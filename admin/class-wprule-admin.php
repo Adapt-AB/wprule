@@ -100,6 +100,8 @@ class Wprule_Admin {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wprule-admin.js', array( 'jquery' ), $this->version, false );
 
+		wp_localize_script( $this->plugin_name, 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+
 	}
 	public function addPluginAdminMenu() {
 		//add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
@@ -188,7 +190,6 @@ class Wprule_Admin {
 		);
 
 		// Submit button test settings field
-		// unset($args);
 		$args = array (
 			'type'      => 'input',
 			'subtype'   => 'text',
@@ -211,6 +212,31 @@ class Wprule_Admin {
 		register_setting(
 			'wprule_general_settings',
 			'wprule_setting_submit_button_text'
+		);
+
+		// Select tags
+		$args = array (
+			'type'      => 'input',
+			'subtype'   => 'text',
+			'id'    => 'wprule_setting_tags',
+			'name'      => 'wprule_setting_tags',
+			'required' => 'true',
+			'get_options_list' => '',
+			'value_type'=>'normal',
+			'wp_data' => 'option'
+		);
+
+		add_settings_field(
+			'wprule_setting_tags',
+			'Select tags',
+			array( $this, 'wprule_render_settings_field' ),
+			'wprule_general_settings',
+			'wprule_general_section',
+			$args
+		);
+		register_setting(
+			'wprule_general_settings',
+			'wprule_setting_tags'
 		);
 
 	}
