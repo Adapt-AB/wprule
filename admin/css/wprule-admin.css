@@ -20,12 +20,15 @@
 #wprule_list_tags span {
 	display: inline-block;
 	background: #fff;
-	border-radius: 3px;
+	border-radius: 8px;
 	margin: 5px;
 	padding: 5px 10px;
 	cursor: pointer;
 }
 #wprule_list_tags span.tag-selected {
-	background: #2271b1;
-	color: #fff;
+	background: #dce0fc;
+	color: #34386f;
+}
+.tags-info {
+	padding: 5px;
 }
