@@ -1,6 +1,6 @@
 # WPRule
 
-**UNDER DEVELOPMENT** - Not yet functional
+**UNDER DEVELOPMENT** Version 1.0
 
 Integrates WordPress with rule.io. Requires a rule.io subscription.
 
