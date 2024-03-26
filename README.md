@@ -15,7 +15,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 ## Todo
 
 - localization
-- 
+- allow subscriber to choose from selected tags
 
 ## Installation
 1. Click on the green clone or download button on this page and click Download Zip
