@@ -167,7 +167,7 @@ class Wprule_Admin {
 		unset($args);
 		$args = array (
 			'type'      => 'input',
-			'subtype'   => 'password',
+			'subtype'   => 'text',
 			'id'    => 'wprule_setting_apikey',
 			'name'      => 'wprule_setting_apikey',
 			'required' => 'true',

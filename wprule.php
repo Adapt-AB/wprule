@@ -3,14 +3,14 @@
 /**
  *
  * @link              https://github.com/Adapt-AB/wprule
- * @since             1.0.1
+ * @since             1.0.2
  * @package           Wprule
  *
  * @wordpress-plugin
  * Plugin Name:       WPRule
  * Plugin URI:        https://github.com/Adapt-AB/wprule
  * Description:       Integrates WordPress with rule.io
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Adam Rehal @ Adapt AB
  * Author URI:        https://www.adapt.se
  * License:           GPL-2.0+
@@ -29,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Update it as you release new versions.
  */
-define( 'SETTINGS_PAGE_VERSION', '1.0.1' );
+define( 'SETTINGS_PAGE_VERSION', '1.0.2' );
 
 /**
  * The code that runs during plugin activation.
@@ -154,14 +154,53 @@ function wprule_get_tags() {
 		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		CURLOPT_CUSTOMREQUEST => 'GET',
 		CURLOPT_HTTPHEADER => array(
-		'Authorization: Bearer ' . $apikey
-	),
+			'Authorization: Bearer ' . $apikey
+		),
 	));
 
 	$response = curl_exec($curl);
 
 	curl_close($curl);
 	echo $response;
+
+    // Die allready you f*cker!
+    wp_die();
+}
+
+add_action( 'wp_ajax_wprule_validate_apikey', 'wprule_validate_apikey' );
+function wprule_validate_apikey() {
+
+	$apikey = get_option( "wprule_setting_apikey", false );
+
+    $curl = curl_init();
+
+	curl_setopt_array($curl, array(
+		CURLOPT_URL => 'https://app.rule.io/api/v2/',
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'GET',
+		CURLOPT_HTTPHEADER => array(
+			'Authorization: Bearer ' . $apikey
+		),
+	));
+
+	$response = curl_exec($curl);
+
+	curl_close($curl);
+	if (!$response) {
+		$response = array("valid" => true);
+
+	}else{
+		$response = array("valid" => false);
+	}
+	$response = json_encode($response);
+	echo $response;
+
+
 
     // Die allready you f*cker!
     wp_die();

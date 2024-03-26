@@ -3,6 +3,21 @@
 
 	jQuery(document).ready(function($) {
 
+		//Validate API-key
+		if ($('#wprule_setting_apikey').val()) {
+			var data = {
+				'action': 'wprule_validate_apikey'
+			};
+	    	$.post(ajax_object.ajax_url, data, function(api_key) {
+				api_key = jQuery.parseJSON(api_key);
+
+				if (!api_key.valid) {
+					$('.wrap h2').after('<div id="setting-error-settings_updated" class="notice settings-error is-dismissible notice-error"><p><strong>Your api key is not valid</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>');
+					$('#wprule_setting_apikey').css('background', '#f8d7da');
+				}
+			});
+		}
+
 		// UI for selecting tags
 		$('#wprule_setting_tags').after('<div class="tags-info">Tags are created in <a href="https://app.rule.io/v5/#/app/subscribers/tags/list">rule.io</a></div><div id="wprule_list_tags"></div>')
 
@@ -24,7 +39,6 @@
 		};
     	$.post(ajax_object.ajax_url, data, function(response) {
 			response = jQuery.parseJSON(response);
-			console.log(response);
 			var tags = "";
 			$.each(response.tags, function(index, val) {
 				tags = tags + "<span>" + val.name + "</span>";
@@ -38,6 +52,12 @@
 				}
 			});
 		});
+
+    	$('#wprule_setting_apikey').on('focus', function(event) {
+    		$(this).css('background', '#fff');
+    	});
+
+
 	});
 
 })( jQuery );
