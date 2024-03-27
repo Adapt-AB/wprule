@@ -16,7 +16,7 @@ Integrate Rule.io's advanced email marketing, newsletters, and automation tools 
 
 ## Requirements
 
-Requires a <a href="https://rule.io">rule.io</a> subscription.
+Requires a <a href="https://rule.io">rule.io</a> subscription. <br>
 Requires WP at least: 3.0.1 <br>
 Requires cURL to be installed on the server <br>
 
