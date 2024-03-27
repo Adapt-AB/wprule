@@ -214,7 +214,7 @@ class Wprule_Admin {
 			'wprule_setting_submit_button_text'
 		);
 
-		// Select tags
+		// Select internal tags
 		$args = array (
 			'type'      => 'input',
 			'subtype'   => 'text',
@@ -228,7 +228,7 @@ class Wprule_Admin {
 
 		add_settings_field(
 			'wprule_setting_tags',
-			'Select tags',
+			'Internal tags',
 			array( $this, 'wprule_render_settings_field' ),
 			'wprule_general_settings',
 			'wprule_general_section',
@@ -237,6 +237,31 @@ class Wprule_Admin {
 		register_setting(
 			'wprule_general_settings',
 			'wprule_setting_tags'
+		);
+
+		// Select external tags
+		$args = array (
+			'type'      => 'input',
+			'subtype'   => 'text',
+			'id'    => 'wprule_setting_external_tags',
+			'name'      => 'wprule_setting_external_tags',
+			'required' => 'true',
+			'get_options_list' => '',
+			'value_type'=>'normal',
+			'wp_data' => 'option'
+		);
+
+		add_settings_field(
+			'wprule_setting_external_tags',
+			'User facing tags',
+			array( $this, 'wprule_render_settings_field' ),
+			'wprule_general_settings',
+			'wprule_general_section',
+			$args
+		);
+		register_setting(
+			'wprule_general_settings',
+			'wprule_setting_external_tags'
 		);
 
 	}

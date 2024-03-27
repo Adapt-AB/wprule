@@ -10,14 +10,19 @@
 	max-width: 100%;
 	height: auto;
 }
-#wprule_setting_tags {
+
+#wprule_setting_tags,
+#wprule_setting_external_tags  {
 	display: none;
 }
-#wprule_list_tags {
+
+#wprule_list_tags,
+#wprule_list_external_tags {
 	max-width: 400px;
 	padding-top: 5px;
 }
-#wprule_list_tags span {
+#wprule_list_tags span,
+#wprule_list_external_tags span {
 	display: inline-block;
 	background: #fff;
 	border-radius: 8px;
@@ -25,7 +30,8 @@
 	padding: 5px 10px;
 	cursor: pointer;
 }
-#wprule_list_tags span.tag-selected {
+#wprule_list_tags span.tag-selected,
+#wprule_list_external_tags span.tag-selected {
 	background: #dce0fc;
 	color: #34386f;
 }

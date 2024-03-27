@@ -49,8 +49,13 @@ class Wprule_Shortcode {
 				?>
 
 				<div id="wprule">
-					<input type="email" value="" placeholder="Your Email" name="wprule_email"><a href="#"><?php echo $button ?></a>
 					<div class="wprule_response"></div>
+					<input type="email" value="" placeholder="Your Email" name="wprule_email"><a href="#"><?php echo $button ?></a>
+					<div class="wprule_tags">
+						<?php foreach (array_filter(explode(",", get_option( "wprule_setting_external_tags", false ))) as $tag) {
+							echo "<span>" . $tag . "</span> ";
+						} ?>
+					</div>
 				</div>
 
 				<?php

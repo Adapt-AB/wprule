@@ -31,13 +31,11 @@
 }
 #wprule .wprule_response {
 	display: none;
-	color: #155724;
 	background-color: #d4edda;
-	border-color: #c3e6cb;
-	padding: 10px 16px;
 	font-size: 14px;
 	position: absolute;
 	width: 400px;
+	padding: 15px 17px;
 }
 #wprule .wprule_response.good {
 	color: #155724;
@@ -49,6 +47,34 @@
 	background-color: #f8d7da;
 	border-color: #f5c6cb;
 }
-#wprule .wprule_response .close {
-	color:green;
+#wprule .wprule_response:after{
+	display: inline-block;
+	content: "\00d7";
+	float: right;
+	font-weight: bold;
+	font-size: 30px;
+	position: absolute;
+	right: 15px;
+	top: 0;
+	cursor: pointer;
+	opacity: 0.5;
+}
+#wprule .wprule_tags {
+	position: absolute;
+	width: 500px;
+}
+
+#wprule .wprule_tags span {
+	display: inline-block;
+	background: #eee;
+	color: #aaa;
+	border-radius: 8px;
+	margin: 7px 2px 0 0;
+	padding: 5px 10px;
+	cursor: pointer;
+	font-size: 14px;
+}
+#wprule .wprule_tags span.tag-selected {
+	background: #dce0fc;
+	color: #34386f;
 }
