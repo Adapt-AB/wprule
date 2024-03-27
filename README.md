@@ -1,17 +1,24 @@
 # WPRule
 
-**Version** 1.1.0
-wprule_
+**Version** 1.0.2
 
-Integrates WordPress with rule.io. Requires a <a href="https://rule.io">rule.io</a> subscription.
+Integrates WordPress with rule.io.
 
-Requires WP at least: 3.0.1 <br>
-Requires cURL to be installed on the server <br>
 Tested up to: 6.5 <br>
 Stable tag: 6.5 <br>
 Author:  Adam Rehal @ [Adapt AB](https://www.adapt.se) <br>
 License: GPLv2 or later <br>
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
+
+## Description
+
+Integrate Rule.io's advanced email marketing, newsletters, and automation tools with your WordPress website. With WPRule, effortlessly sync subscribers with Rule.io's platform directly from your WordPress dashboard. Automate your marketing efforts by setting up workflows and triggers based on user behavior and demographics. Gain insights into your campaign performance with comprehensive analytics and reporting. WPRule simplifies the process of leveraging Rule.io's powerful marketing tools, making it easy to optimize your marketing strategy.
+
+## Requirements
+
+Requires a <a href="https://rule.io">rule.io</a> subscription.
+Requires WP at least: 3.0.1 <br>
+Requires cURL to be installed on the server <br>
 
 ## Todo
 
