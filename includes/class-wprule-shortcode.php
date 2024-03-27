@@ -49,7 +49,7 @@ class Wprule_Shortcode {
 				?>
 
 				<div id="wprule">
-					<input type="email" value="adam@adam.io" placeholder="Your Email" name="wprule_email"><a href="#"><?php echo $button ?></a>
+					<input type="email" value="" placeholder="Your Email" name="wprule_email"><a href="#"><?php echo $button ?></a>
 					<div class="wprule_response"></div>
 				</div>
 
