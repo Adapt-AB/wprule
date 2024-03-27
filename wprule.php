@@ -3,16 +3,14 @@
 /**
  *
  * @link              https://github.com/Adapt-AB/wprule
- * @since             1.1.0
-wprule_
+ * @since             1.1.1
  * @package           Wprule
  *
  * @wordpress-plugin
  * Plugin Name:       WPRule
  * Plugin URI:        https://github.com/Adapt-AB/wprule
  * Description:       Integrates WordPress with rule.io
- * Version:           1.1.0
-wprule_
+ * Version:           1.1.1
  * Author:            Adam Rehal @ Adapt AB
  * Author URI:        https://www.adapt.se
  * License:           GPL-2.0+
@@ -31,8 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Update it as you release new versions.
  */
-define( 'SETTINGS_PAGE_VERSION', '1.1.0
-wprule_' );
+define( 'SETTINGS_PAGE_VERSION', '1.1.1' );
 
 /**
  * The code that runs during plugin activation.
