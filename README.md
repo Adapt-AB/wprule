@@ -1,6 +1,7 @@
 # WPRule
 
-**Version** 1.0.2
+**Version** 1.1.0
+wprule_
 
 Integrates WordPress with rule.io. Requires a <a href="https://rule.io">rule.io</a> subscription.
 
