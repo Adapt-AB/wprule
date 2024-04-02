@@ -267,7 +267,11 @@ class Wprule_Admin {
 	}
 
 	public function wprule_display_general_account() {
-		//echo '<p>These settings apply to all Plugin Name functionality.</p>';
+		if (!WP_Http_Curl::test()) {
+			echo '<div id="setting-error-settings_updated" class="notice settings-error is-dismissible notice-error"><p><strong>You do not have <a href="https://www.php.net/manual/en/book.curl.php">php-curl</a> installed on your server.</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div><p>cURL is required for WPRule to post and fetch data. Install it on your server or ask your host provider for help</p>';
+			wp_die();
+		}
+
 	} 
 
 	public function wprule_render_settings_field($args) {

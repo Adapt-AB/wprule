@@ -1,6 +1,6 @@
 # WPRule
 
-**Version** 1.1.1
+**Version** 1.1.2
 
 Integrates WordPress with rule.io.
 
@@ -25,6 +25,20 @@ Integrate Rule.io's advanced email marketing, newsletters, and automation tools 
 - Requires a <a href="https://rule.io">rule.io</a> subscription. <br>
 - Requires WP at least: 3.0.1 <br>
 - Requires cURL to be installed on the server <br>
+
+### Installing cURL
+
+Ubuntu
+
+`$ php -v`
+`PHP 8.1.2-1ubuntu2.14 (cli) (built: Aug 18 2023 11:41:11) (NTS)`
+`Copyright (c) The PHP Group`
+`Zend Engine v4.1.2, Copyright (c) Zend Technologies`
+    `with Zend OPcache v8.1.2-1ubuntu2.14, Copyright (c), by Zend Technologies`
+
+`$ sudo apt-get install php8.1-curl`
+
+
 
 ## Todo
 
