@@ -13,12 +13,12 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
+ * Defines the plugin name and version, and enqueues
+ * the admin-specific stylesheet and JavaScript.
  *
  * @package    Wprule
  * @subpackage Wprule/admin
- * @author     Ben Shadle <benshadle@gmail.com>
+ *
  */
 class Wprule_Admin {
 
@@ -63,46 +63,24 @@ class Wprule_Admin {
 	 */
 	public function enqueue_styles() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Wprule_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Wprule_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wprule-admin.css', array(), $this->version, 'all' );
 
 	}
 
 	/**
-	 * Register the JavaScript for the admin area.
+	 * Register the JavaScript for the admin area and acces to the admin ajax url.
 	 *
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Wprule_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Wprule_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wprule-admin.js', array( 'jquery' ), $this->version, false );
 
 		wp_localize_script( $this->plugin_name, 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
 	}
+
+	// Plugin menu in admin area
 	public function addPluginAdminMenu() {
 		//add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
 		add_menu_page(  $this->plugin_name, 'WPRule', 'administrator', $this->plugin_name, array( $this, 'displayPluginAdminDashboard' ), 'dashicons-email-alt', 26 );
@@ -266,6 +244,7 @@ class Wprule_Admin {
 
 	}
 
+	//Check if php-curl ins installed
 	public function wprule_display_general_account() {
 		if (!WP_Http_Curl::test()) {
 			echo '<div id="setting-error-settings_updated" class="notice settings-error is-dismissible notice-error"><p><strong>You do not have <a href="https://www.php.net/manual/en/book.curl.php">php-curl</a> installed on your server.</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div><p>cURL is required for WPRule to post and fetch data. Install it on your server or ask your host provider for help</p>';
@@ -318,7 +297,7 @@ class Wprule_Admin {
 					}
 					break;
 			default:
-					# code...
+
 					break;
 		}
 	}

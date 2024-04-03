@@ -19,7 +19,7 @@
  *
  * @package    Wprule
  * @subpackage Wprule/includes
- * @author     Ben Shadle <benshadle@gmail.com>
+ *
  */
 class Wprule_Loader {
 

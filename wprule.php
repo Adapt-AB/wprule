@@ -3,7 +3,7 @@
 /**
  *
  * @link              https://github.com/Adapt-AB/wprule
- * @since             1.1.3
+ * @since             1.0.0
  * @package           Wprule
  *
  * @wordpress-plugin
