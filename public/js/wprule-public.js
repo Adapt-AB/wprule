@@ -21,7 +21,8 @@
 				var data = {
 					'action': 'wprule_add_subscriber',
 					'email' : email,
-					'tags'	: tags
+					'tags'	: tags,
+					'type'	: 'subscribe'
 				};
 
 		    	$.post(ajax_object.ajax_url, data, function(response) {

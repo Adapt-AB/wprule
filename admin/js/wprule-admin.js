@@ -6,7 +6,8 @@
 		//Validate API-key
 		if ($('#wprule_setting_apikey').val()) {
 			var data = {
-				'action': 'wprule_validate_apikey'
+				'action': 'wprule_request',
+				'type': 'validate'
 			};
 	    	$.post(ajax_object.ajax_url, data, function(api_key) {
 				api_key = jQuery.parseJSON(api_key);
@@ -48,7 +49,8 @@
 
 		// Get the tags
 		var data = {
-			'action': 'wprule_get_tags',
+			'action': 'wprule_request',
+			'type': 'tags'
 		};
     	$.post(ajax_object.ajax_url, data, function(response) {
 			response = jQuery.parseJSON(response);
