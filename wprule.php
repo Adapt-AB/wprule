@@ -58,7 +58,7 @@ register_deactivation_hook( __FILE__, 'deactivate_wprule' );
  */
 function wprule_shortcode() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wprule-shortcode.php';
-	Wprule_Shortcode::wprule_shortcode();
+	Wprule_Shortcode::wprule_shortcode_init();
 }
 add_action( 'init', 'wprule_shortcode' );
 

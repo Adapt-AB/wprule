@@ -29,7 +29,7 @@ class Wprule_Shortcode {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function wprule_shortcode() {
+	public static function wprule_shortcode_init() {
 
 		function wprule_shortcode_output( $atts ) {
 
