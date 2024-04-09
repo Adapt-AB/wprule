@@ -63,6 +63,16 @@ function wprule_shortcode() {
 add_action( 'init', 'wprule_shortcode' );
 
 /**
+ * Referrer Policy
+ * This action is documented in includes/class-wprule-shortcode.php
+ */
+add_filter( 'allowed_http_origins', 'add_allowed_origins' );
+function add_allowed_origins( $origins ) {
+    $origins[] = 'https://app.rule.io';
+    return $origins;
+}
+
+/**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
