@@ -80,13 +80,75 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wprule.php';
  */
 
 /**
- * cURL request
+ * cURL request front-end
  *
- * This functions handles all API-requests
+ * Add subscriber
  *
  */
+add_action( 'wp_ajax_wprule_add_subscriber', 'wprule_add_subscriber' );
+function wprule_add_subscriber() {
 
-add_action( 'wp_ajax_nopriv_wprule_request', 'wprule_request' );
+	$email = $_POST["email"];
+	$external_tags = $_POST["tags"];
+	$apikey = get_option( "wprule_setting_apikey", false );
+	$optin = (get_option( "wprule_setting_require_optin", false )) ? "true" : "false";
+
+	// Tags
+	$tags = "";
+	$internal_tags = array_filter(explode(",", get_option( "wprule_setting_tags", false )));
+	if ($external_tags) {
+		$all_tags = array_merge($internal_tags, $external_tags);
+	}else{
+		$all_tags = $internal_tags;
+	}
+	foreach ($all_tags as $tag) {
+		$tags .= '"' . $tag . '",';
+	}
+	$tags = rtrim($tags, ',');
+
+    $curl = curl_init();
+	curl_setopt_array($curl, array(
+		CURLOPT_URL => 'https://app.rule.io/api/v2/subscribers',
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'POST',
+		CURLOPT_POSTFIELDS =>'{
+			"update_on_duplicate": true,
+			"require_opt_in": "' . $require_optin . '",
+			"tags": [
+			    ' . $tags . '
+			],
+			"subscribers": {
+			    "email": "' . $email . '",
+			    "fields": []
+		    }
+		}',
+		CURLOPT_HTTPHEADER => array(
+			'Content-Type: application/json',
+			'Authorization: Bearer ' . $apikey
+		),
+	));
+
+	$response = curl_exec($curl);
+
+	curl_close($curl);
+	echo $response;
+
+    // Die allready you f*cker!
+    wp_die();
+}
+
+
+/**
+ * cURL request back-end
+ *
+ * gets tags or validates API-key
+ *
+ */
 add_action( 'wp_ajax_wprule_request', 'wprule_request' );
 function wprule_request() {
 
@@ -107,42 +169,6 @@ function wprule_request() {
 	);
 
 	switch ($_POST["type"]) {
-
-		// Subscribe user
-		case 'subscribe':
-			$email = $_POST["email"];
-			$external_tags = $_POST["tags"];
-			$apikey = get_option( "wprule_setting_apikey", false );
-			$optin = (get_option( "wprule_setting_require_optin", false )) ? "true" : "false";
-
-			// Tags
-			$tags = "";
-			$internal_tags = array_filter(explode(",", get_option( "wprule_setting_tags", false )));
-			if ($external_tags) {
-				$all_tags = array_merge($internal_tags, $external_tags);
-			}else{
-				$all_tags = $internal_tags;
-			}
-			foreach ($all_tags as $tag) {
-				$tags .= '"' . $tag . '",';
-			}
-			$tags = rtrim($tags, ',');
-
-			$curl_options[CURLOPT_URL] = 'https://app.rule.io/api/v2/subscribers';
-			$curl_options[CURLOPT_CUSTOMREQUEST] = 'POST';
-			$curl_options[CURLOPT_POSTFIELDS] = '"update_on_duplicate": true,
-				"require_opt_in": "' . $require_optin . '",
-				"tags": [
-				    ' . $tags . '
-				],
-				"subscribers": {
-				    "email": "' . $email . '",
-				    "fields": []
-			    }
-			}';
-			curl_setopt_array($curl, $curl_options);
-			$response = curl_exec($curl);
-			break;
 
 		// Get all tags
 		case 'tags':

@@ -19,10 +19,9 @@
 
 			if (isEmail(email)) {
 				var data = {
-					'action': 'wprule_request',
+					'action': 'wprule_add_subscriber',
 					'email' : email,
-					'tags'	: tags,
-					'type'	: 'subscribe'
+					'tags'	: tags
 				};
 
 		    	$.post(ajax_object.ajax_url, data, function(response) {
