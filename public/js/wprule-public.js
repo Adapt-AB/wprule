@@ -19,7 +19,7 @@
 
 			if (isEmail(email)) {
 				var data = {
-					'action': 'wprule_add_subscriber',
+					'action': 'wprule_request',
 					'email' : email,
 					'tags'	: tags,
 					'type'	: 'subscribe'
