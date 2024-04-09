@@ -10,7 +10,7 @@
  * Plugin Name:       WPRule
  * Plugin URI:        https://github.com/Adapt-AB/wprule
  * Description:       Integrates WordPress with rule.io
- * Version:           1.1.4
+ * Version:           1.1.3
  * Author:            Adam Rehal @ Adapt AB
  * Author URI:        https://www.adapt.se
  * License:           GPL-2.0+
@@ -29,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Update it as you release new versions.
  */
-define( 'SETTINGS_PAGE_VERSION', '1.1.4' );
+define( 'SETTINGS_PAGE_VERSION', '1.1.3' );
 
 /**
  * The code that runs during plugin activation.
@@ -63,16 +63,6 @@ function wprule_shortcode() {
 add_action( 'init', 'wprule_shortcode' );
 
 /**
- * Referrer Policy
- * This action is documented in includes/class-wprule-shortcode.php
- */
-add_filter( 'allowed_http_origins', 'add_allowed_origins' );
-function add_allowed_origins( $origins ) {
-    $origins[] = 'https://app.rule.io';
-    return $origins;
-}
-
-/**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
@@ -95,6 +85,8 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wprule.php';
  * This functions handles all API-requests
  *
  */
+
+add_action( 'wp_ajax_nopriv_wp_ajax_wprule_request', 'wprule_request' );
 add_action( 'wp_ajax_wprule_request', 'wprule_request' );
 function wprule_request() {
 
