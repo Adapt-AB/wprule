@@ -86,7 +86,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wprule.php';
  *
  */
 
-add_action( 'wp_ajax_nopriv_wp_ajax_wprule_request', 'wprule_request' );
+add_action( 'wp_ajax_nopriv_wprule_request', 'wprule_request' );
 add_action( 'wp_ajax_wprule_request', 'wprule_request' );
 function wprule_request() {
 
