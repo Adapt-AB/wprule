@@ -14,7 +14,9 @@
 
 				if (!api_key.valid) {
 					$('.wrap h2').after('<div id="setting-error-settings_updated" class="notice settings-error is-dismissible notice-error"><p><strong>Your api key is not valid</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>');
-					$('#wprule_setting_apikey').css('background', '#f8d7da');
+					$('#wprule_setting_apikey').after('<span class="invalid" title="Invalid API-key"></span>')
+				}else{
+					$('#wprule_setting_apikey').after('<span class="valid" title="Valid API-key"></span>')
 				}
 			});
 		}

@@ -10,7 +10,20 @@
 	max-width: 100%;
 	height: auto;
 }
-
+#wprule_setting_apikey + span {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	vertical-align: sub;
+	margin-left: 5px;
+	background-size: contain;
+}
+#wprule_setting_apikey + span.valid {
+	background-image: url("../img/green_check.png");
+}
+#wprule_setting_apikey + span.invalid {
+	background-image: url("../img/red_check.png");
+}
 #wprule_setting_tags,
 #wprule_setting_external_tags  {
 	display: none;
