@@ -1,6 +1,6 @@
 # WPRule
 
-**Version** 1.1.5
+**Version** 1.1.6
 
 Integrates WordPress with rule.io.
 
